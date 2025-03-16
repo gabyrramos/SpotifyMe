@@ -14,12 +14,12 @@ while True:
         break
 
     try:
-        # Analyze emotion
+        # Analyzing emotion
         result = DeepFace.analyze(frame, actions=['emotion'], enforce_detection=False)
         emotion = result[0]['dominant_emotion']
         
-        # Display emotion on the screen
-        cv2.putText(frame, f"Emotion: {emotion}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        # Displaying emotion on the screen
+        cv2.putText(frame, f"Emotion: {emotion}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2)
         cv2.imshow('Emotion Detector', frame)
 
     except Exception as e:
@@ -29,4 +29,4 @@ while True:
         break
 
 cap.release()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows() 
