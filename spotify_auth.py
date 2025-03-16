@@ -1,16 +1,15 @@
 import os
 from dotenv import load_dotenv
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+from spotipy.oauth2 import SpotifyClientCredentials
 
-load_dotenv()
+load_dotenv() #here we are loading variables: client id and client secret 
 
-def authenticate_spotify():
-    """aqui vamos a autenticar a spotify usando los datos del .env """
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-        client_id=os.getenv("CLIENT_ID")
-        client_secret=("CLIENT_SECRET")
-        redirect_uri=("http://localhost:8080")
-        scope="playlist-read-private"
-    ))
-    return
+auth_manager = SpotifyClientCredentials(
+    client_id=os.getenv("CLIENT_ID")
+    client_secret=("CLIENT_SECRET")
+    redirect_uri=("http://localhost:8080")
+    scope="playlist-read-private"
+)
+sp = spotipy.Spotify(auth_manager=auth_manager)
+
